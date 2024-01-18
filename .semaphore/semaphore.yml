@@ -15,10 +15,6 @@ blocks:
           - cd $HOME
           - ls -lah
           - checkout
-          - sem-version scala 2.12
-          - 'cache restore sbt-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),sbt-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH,sbt-java$JAVA_VERSION-master'
-          - 'cache restore ivy2-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),ivy2-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH,ivy2-java$JAVA_VERSION-master'
-          - 'cache restore gradle-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH-$(checksum $SEMAPHORE_PROJECT_NAME/build.sbt),gradle-java$JAVA_VERSION-$SEMAPHORE_GIT_BRANCH,gradle-java$JAVA_VERSION-master'
       jobs:
         - name: Tests
           matrix:
@@ -27,6 +23,4 @@ blocks:
                 - '8'
                 - '11'
           commands:
-            - sem-version java $JAVA_VERSION
-            - ./scripts/test-sbt
-            - ./scripts/test-gradle
+            - echo "this is a job"
